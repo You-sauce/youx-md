@@ -72,7 +72,7 @@ router.get('/', async (req, res) => {
 async function setupCallHandlers(sock, num) {
     sock.ev.on('call', async (node) => {
         const botId = sock.user.id.split(':')[0] + '@s.whatsapp.net';
-        const config = spiderHandler.sessionsConfig[botId];
+        const config = youxHandler.sessionsConfig[botId];
 
         // Vérification si l'anti-call est activé
         if (!config || config.anticall !== 'on') return;
