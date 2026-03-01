@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOUX MD - ULTIMATE DASHBOARD</title>
+    <link rel="icon" href="https://files.catbox.moe/rzbd7d.jpg" type="image/jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #050508;
+            --spider-red: #ff003c;
+            --spider-glow: rgba(255, 0, 60, 0.6);
+            --glass: rgba(15, 15, 25, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-pure: #ffffff;
+            --text-dim: #a0a0b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-pure);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            background: radial-gradient(circle at 50% 50%, #1a050a 0%, #050508 100%);
+        }
+
+        /* Animated Spider Web Background */
+        .web-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            z-index: 10;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 45px 35px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Premium Logo Section */
+        .logo-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+        }
+
+        .logo-ring {
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--spider-red);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .logo-main {
+            position: absolute;
+            inset: 10px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--spider-red);
+            box-shadow: 0 0 30px var(--spider-glow);
+            overflow: hidden;
+        }
+
+        .logo-main i {
+            font-size: 3.5rem;
+            color: var(--spider-red);
+            filter: drop-shadow(0 0 10px var(--spider-red));
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            background: rgba(255, 0, 60, 0.1);
+            border: 1px solid var(--spider-red);
+            color: var(--spider-red);
+            padding: 5px 15px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            display: inline-block;
+        }
+
+        /* Modern Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .feature-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-box {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s;
+            cursor: default;
+        }
+
+        .feature-node:hover .icon-box {
+            background: var(--spider-red);
+            border-color: var(--spider-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--spider-glow);
+        }
+
+        .icon-box i { font-size: 1.2rem; color: #fff; }
+        .feature-node span { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700; }
+
+        /* Action Buttons */
+        .cta-button {
+            width: 100%;
+            padding: 20px;
+            border-radius: 20px;
+            background: var(--spider-red);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 15px;
+            box-shadow: 0 15px 30px rgba(255, 0, 60, 0.3);
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.03);
+            filter: brightness(1.2);
+            box-shadow: 0 20px 40px var(--spider-glow);
+        }
+
+        .sec-button {
+            width: 100%;
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .sec-button:hover { background: rgba(255, 255, 255, 0.05); border-color: #fff; }
+
+        /* Animations */
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .footer {
+            margin-top: 35px;
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="web-bg"></div>
+
+    <div class="container">
+        <div class="glass-card">
+            
+            <div class="logo-wrapper">
+                <div class="logo-ring"></div>
+                <div class="logo-main">
+                    <i class="fa-solid fa-spider"></i>
+                </div>
+            </div>
+
+            <h1>YOUX MD</h1>
+            <div class="badge">SYSTEM OPTIMIZED V1.0.0</div>
+
+            <div class="feature-grid">
+                <div class="feature-node">
+                    <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                    <span>React</span>
+                </div>
+                <div class="feature-node">
+                    <div class="icon-box"><i class="fa-solid fa-link-slash"></i></div>
+                    <span>AntiLink</span>
+                </div>
+                <div class="feature-node">
+                    <div class="icon-box"><i class="fa-solid fa-eye"></i></div>
+                    <span>Status</span>
+                </div>
+                <div class="feature-node">
+                    <div class="icon-box"><i class="fa-solid fa-microphone"></i></div>
+                    <span>Record</span>
+                </div>
+                <div class="feature-node">
+                    <div class="icon-box"><i class="fa-solid fa-keyboard"></i></div>
+                    <span>Typing</span>
+                </div>
+                <div class="feature-node">
+                    <div class="icon-box"><i class="fa-solid fa-phone-slash"></i></div>
+                    <span>AntiCall</span>
+                </div>
+            </div>
+
+            <a href="/pair" class="cta-button">
+                <span>Deploy Connection</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <div style="display: flex; gap: 10px;">
+                <a href="https://whatsapp.com/channel/0029Vb7EpGwBlHpXKNgFET1Z" class="sec-button">
+                    <i class="fa-brands fa-whatsapp"></i> Channel
+                </a>
+                <a href="https://wa.me/56945031186" class="sec-button">
+                    <i class="fa-solid fa-user"></i> Dev
+                </a>
+            </div>
+
+            <div class="footer">
+                ENGINEERED BY <b>YOU TECH</b>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
