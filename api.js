@@ -5,13 +5,13 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8000;
 
 // On importe l'objet exporté par index.js
-const spiderIndex = require('./index.js'); 
+const youxIndex = require('./index.js'); 
 
 require('events').EventEmitter.defaultMaxListeners = 500;
 
 // --- MODIFICATION ICI ---
 // On utilise .router pour dire à Express de prendre uniquement la partie Router
-app.use('/code', spiderIndex.router); 
+app.use('/code', youxIndex.router); 
 
 app.use('/pair', async (req, res, next) => {
     res.sendFile(__path + '/pair.html')
