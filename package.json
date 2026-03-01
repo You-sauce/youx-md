@@ -1,8 +1,8 @@
 {
-  "name": "BigDaddy V2",
-  "version": "2.0.0",
+  "name": "youx-md",
+  "version": "1.0.0",
   "description": "WhatsApp War Bot Using Nodejs",
-  "main": "BIGDADDY.js",
+  "main": "api.js",
   "type": "commonjs",
   "directories": {
     "lib": "lib",
@@ -32,7 +32,7 @@
     "@vitalets/google-translate-api": "^9.2.0",
     "awesome-phonenumber": "^2.64.0",
     "axios": "^1.6.8",
-    "baileys": "npm:@alannxd/baileys",
+    "baileys": "npm:angularsockets",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
     "cookie": "^0.5.0",
